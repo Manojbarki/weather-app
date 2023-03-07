@@ -36,14 +36,14 @@ async function getbycity(query) {
   }
 }
 
-let gethourlydata = async (filterby) => {
-  let data = await getbycity(state.value);
-  let date = new Date();
+const gethourlydata = async (filterby) => {
+  const data = await getbycity(state.value);
+  const date = new Date();
   let filtering;
 
-  let year = date.getFullYear();
+ const year = date.getFullYear();
 
-  let month = date.getMonth() + 1 + "";
+  const month = date.getMonth() + 1 + "";
 
   let day = date.getDate() + "";
   let hours = date.getHours();
@@ -59,8 +59,8 @@ return filterbydate(data,filterby,filtering,hours)
  
 };
 
-let getchartdata = (filtering, data) => {
-  let chartdata = data.filter((el) => {
+const getchartdata = (filtering, data) => {
+  const chartdata = data.filter((el) => {
     return el.dt_txt.includes(filtering);
   });
   state.chartdata = chartdata;

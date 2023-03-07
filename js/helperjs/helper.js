@@ -1,4 +1,4 @@
-let formatstr = (str) => {
+const formatstr = (str) => {
   str = str + "";
   let resultstr;
   if (str.length === 1) {
@@ -13,7 +13,7 @@ let formatdate = (year, month, day) => {
   return year + "-" + formatstr(month) + "-" + formatstr(day);
 };
 
-let gettime = (time) => {
+const gettime = (time) => {
   let resulttime;
  
   if (time > 12) {
@@ -28,7 +28,7 @@ let gettime = (time) => {
   return resulttime;
 };
 
-let filterbydate=(data,filterby,filtering,hours)=>{
+const filterbydate=(data,filterby,filtering,hours)=>{
   let rendererdata = data.filter((el) => {
     let time = +el.dt_txt.split(" ")[1].split(":")[0];
     if (filterby === "today") {

@@ -36,20 +36,20 @@ async function showPosition(position) {
   let lon = position.coords?.longitude;
 
   if (!state.value||!state.weathercarddata||!state.weather_data ||!state.chartdata) {
-    let data = await getmethod(
+    const data = await getmethod(
       `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=6154f8e10b3e8382c5f1896812f2903b`
     );
     state.value = data[0].name;
     choosecountry.value = "";
-    let currentweather = await getmethod(
+    const currentweather = await getmethod(
       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=6154f8e10b3e8382c5f1896812f2903b`
     );
 
     state.weathercarddata = currentweather;
     displayweatherdetails(state.weathercarddata);
-    let datalist = await gethourlydata(state.default);
+   const datalist = await gethourlydata(state.default);
     state.weather_data = datalist;
-    let markup = displaydatahourly(state.weather_data);
+  let markup = displaydatahourly(state.weather_data);
     displaychart();
     hourlydata.insertAdjacentHTML("afterbegin", markup);
     choosecountry.value = "";
@@ -59,7 +59,7 @@ async function showPosition(position) {
     displayweatherdetails(state.weathercarddata);
     let markup = displaydatahourly(state.weather_data);
     displaychart();
-    let checkcurrentcity=[ "Pune","Delhi","Goa","Hyderabad"]
+  const checkcurrentcity=[ "Pune","Delhi","Goa","Hyderabad"]
     if (!checkcurrentcity.includes(state.value)) {
       choosecountry.value = "";
     } else {
@@ -112,7 +112,7 @@ loading(hourlydata)
 
 // Click events to show today weather data
 today.addEventListener("click", async function (e) {
-  let parent = e.target;
+  const parent = e.target;
   if(!parent)return
   let filterby = parent.dataset.filter;
   let newmarkup;
@@ -157,7 +157,7 @@ loading(hourlydata)
 
 // click event to show weatherdata in card
 hourlydata.addEventListener("click", (e) => {
-  let element = e.target.closest(".card1");
+ const element = e.target.closest(".card1");
   let id ;
   let indivisual_data ;
 if(!element)return
