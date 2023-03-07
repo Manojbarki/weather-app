@@ -1,32 +1,35 @@
 import { getmethod } from "./helperjs/apireq.js";
 import { state } from "./state.js";
-import { formatdate } from "./helperjs/helper.js";
+import { filterbydate, formatdate } from "./helperjs/helper.js";
 
 async function getdetails(query) {
+  let landata;
+  let data ;
   if (!query) {
     return;
   }
-  let landata;
 
   landata = await getmethod(
     `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=1&appid=6154f8e10b3e8382c5f1896812f2903b`
   );
 
   let { lat, lon } = landata[0];
-  let data = await getmethod(
+ data = await getmethod(
     `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=6154f8e10b3e8382c5f1896812f2903b`
   );
   return data;
 }
 
 async function getbycity(query) {
+  let landata;
+  let weatherdata;
   if (query) {
-    let landata = await getmethod(
+  landata = await getmethod(
       `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=6154f8e10b3e8382c5f1896812f2903b`
     );
     let { lat, lon } = landata[0];
 
-    let weatherdata = await getmethod(
+    weatherdata = await getmethod(
       `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=6154f8e10b3e8382c5f1896812f2903b`
     );
     return weatherdata.list;
@@ -52,15 +55,8 @@ let gethourlydata = async (filterby) => {
     filtering = formatdate(year, month, day);
   }
   getchartdata(filtering, data);
-  let todaydata = data.filter((el) => {
-    let time = +el.dt_txt.split(" ")[1].split(":")[0];
-    if (filterby === "today") {
-      return el.dt_txt.includes(filtering) && time > hours;
-    } else {
-      return el.dt_txt.includes(filtering);
-    }
-  });
-  return todaydata;
+return filterbydate(data,filterby,filtering,hours)
+ 
 };
 
 let getchartdata = (filtering, data) => {

@@ -1,9 +1,9 @@
 import { gettime } from "./helperjs/helper.js";
 import { state } from "./state.js";
-let carddetailsparent = document.querySelector(".card-details");
-let hourlydata = document.querySelector("#hourly-data");
-let today = document.querySelector("#today");
-let tommorrow = document.querySelector("#tommorrow");
+const carddetailsparent = document.querySelector(".card-details");
+const hourlydata = document.querySelector("#hourly-data");
+const today = document.querySelector("#today");
+const tommorrow = document.querySelector("#tommorrow");
 
 function displayweatherdetails(data) {
   carddetailsparent.innerHTML = "";
@@ -132,12 +132,13 @@ function displaydatahourly(weatherdata) {
 
 let displaychart = () => {
   let dataset = state.chartdata.map((el) => el.main.temp);
+  var ctx = document.getElementById("myChart");
   let labels = state.chartdata.map((data) => {
     let time = data.dt_txt.split(" ")[1].split(":")[0];
     return (time = gettime(time));
   });
 
-  var ctx = document.getElementById("myChart");
+  
 
   if (state.newchart) {
     state.newchart.clear();
@@ -213,7 +214,7 @@ let displaychart = () => {
 function loading(parent) {
   parent.innerHTML = "";
   let markup = `
-        <div class="spinner-border text-success m-auto" role="status">
+        <div class="spinner-border text-success m-auto" style="width: 3rem; height: 3rem;"  role="status">
           <span class="sr-only">Loading...</span>
         </div>
         `;
@@ -230,10 +231,27 @@ function showactivebtn(str) {
   }
 }
 
+function showactive_card(){
+  const activecards=document.querySelectorAll("[data-id]")
+
+  activecards.forEach((el)=>{
+    el.classList.remove("activecard")
+  })
+  
+state.weather_data.forEach(element => {
+  if(element.dt===state.weathercarddata.dt){
+let  activecard=document.querySelector(`[data-id="${element.dt}"]`)
+  activecard.classList.add("activecard")
+  }
+ 
+});
+}
+
 export {
   displaydatahourly,
   displayweatherdetails,
   loading,
   showactivebtn,
   displaychart,
+  showactive_card
 };

@@ -15,6 +15,7 @@ let formatdate = (year, month, day) => {
 
 let gettime = (time) => {
   let resulttime;
+ 
   if (time > 12) {
     resulttime = formatstr(time - 12) + " " + "PM";
   } else if (time === "12") {
@@ -27,4 +28,16 @@ let gettime = (time) => {
   return resulttime;
 };
 
-export { gettime, formatstr, formatdate };
+let filterbydate=(data,filterby,filtering,hours)=>{
+  let rendererdata = data.filter((el) => {
+    let time = +el.dt_txt.split(" ")[1].split(":")[0];
+    if (filterby === "today") {
+      return el.dt_txt.includes(filtering) && time > hours;
+    } else {
+      return el.dt_txt.includes(filtering);
+    }
+  });
+  return rendererdata
+}
+
+export { gettime, formatstr, formatdate,filterbydate };
