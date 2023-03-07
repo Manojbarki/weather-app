@@ -1,0 +1,224 @@
+
+#header .navbar-brand{
+    font-size: 25px;
+    font-weight: bold;
+}
+#details-card .card-img-top{
+    height: 210px;
+}
+#header .custom-select-lg{
+    width:400px;
+}
+
+#details-card .sunrise{
+    width:100px;
+    height: fit-content;
+}
+#details-card .sun-img,#hourly-data .cloud-img{
+    width: 50px;
+    height: 50px;
+    
+}
+#details-card .img,#hourly-data .img{
+    width: 100%;
+    height: 100%;
+    object-fit:fill;
+}
+.fa-temperature-three-quarters{
+    font-size: 30px;
+    color: red;
+}
+#details-card .h1{
+    font-weight: bold;
+
+}
+
+
+.card>img{
+    object-fit: cover;
+}
+#card-iteam{
+    width:fit-content;
+    width: 200px;
+    transition: transform 0.2s;
+
+    object-fit: cover;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+#card-iteam:hover {
+    cursor: pointer;
+    transform: scale(0.9);
+  }
+#hourly-data{
+  
+    width: 100%;
+    /* flex-wrap: wrap; */
+    overflow-x: scroll;
+}
+body{
+   
+   opacity: 1.6;
+}
+
+.card{
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    transition: transform 0.2s;
+    border-radius: 100px;
+}
+.card-body h3{
+    text-decoration: underline;
+    text-decoration-color: orangered;
+}
+.card-body{
+    background-color:white;
+    opacity: 0.7;
+    background-color: black;
+    color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 10px;
+}
+
+button {
+    transition: transform 0.3s;
+  }
+  button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+    .card:hover {
+      cursor: pointer;
+    }
+#hourly-data::-webkit-scrollbar {
+    width: 10px;
+    margin-top: 10px;
+  }
+#hourly-data::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+   
+ #hourly-data::-webkit-scrollbar-thumb {
+    background: rgba(136, 128, 101, 0.411); 
+    border-radius: 10px;
+  }
+
+  #chart{
+   
+    position: relative;
+    margin: auto;
+    height: 55vh;
+    width: 60vw;
+  }
+
+
+  @media screen and ( max-width:1030px){
+    #hourly-data{
+        width: 100%;
+        flex-wrap:wrap ;
+        height: 320px;
+       overflow-y: scroll;
+    }
+    #chart{
+   
+        position: relative;
+        margin: auto;
+        height: 55vh;
+        width: 60vw;
+      }
+      #details-card .card-img-top{
+        height: 180px;
+    }
+    #header .custom-select-lg{
+        width:400px;
+    }
+  }
+
+@media screen and (max-width:770px) {
+    #hourly-data{
+        width: 100%;
+       height: 240px;
+       overflow-y: scroll;
+        
+    }
+    #card-iteam{
+        width: 170px;
+        padding: 10px;
+        height: fit-content;
+    }
+    #details-card .card-img-top{
+        height: 160px;
+    }
+    #header .custom-select-lg{
+        width:320px;
+    }
+    .card-body h3{
+        text-decoration: underline;
+        text-decoration-color: orangered;
+        font-size: 22px;
+    }
+    #details-card .h1{
+        font-weight: bold;
+        font-size: 28px;
+    }
+    .card-body>.d-flex+p{
+        font-size: 20px;
+    }
+    .card-body>.d-flex>div>.h3{
+        font-size: 20px;
+    }
+    #details-card .sun-img,#hourly-data .cloud-img{
+        width: 40px;
+        height: 40px;
+        
+    }
+    #card-iteam .cart-body .h4{
+        font-size: 20px;
+    }
+    #card-iteam .cart-body .h3{
+        font-size:  22px;
+    }
+    #header .navbar-toggler{
+        font-size: 15px;
+    }
+}
+
+
+@media screen and (max-width:435px){
+    #header .custom-select-lg{
+        width:250px;
+    }
+    .card-details{
+        margin-bottom: 40px;
+    }
+    #card-iteam{
+        width: 150px;
+        padding: 5px;
+        height: fit-content;
+        margin:auto;
+        margin-bottom: 10px;
+    }
+    #chart{
+   
+        position: relative;
+        margin: auto;
+        height: 40vh;
+        width: 90vw;
+      }
+      #card-iteam{
+        width: 180px;
+        padding: 10px;
+        height: fit-content;
+    }
+    #header .navbar-toggler{
+        font-size: 12px;
+    }
+}
+
+
+
+
+
+
